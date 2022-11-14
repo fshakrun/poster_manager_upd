@@ -1,12 +1,12 @@
-public class PosterManagerUpd {
+public class PosterManager {
     private String[] movies = new String[0];
     private final int limit;
 
-    public PosterManagerUpd() {
+    public PosterManager() {
         limit = 10;
     }
 
-    public PosterManagerUpd(int limit) {
+    public PosterManager(int limit) {
         this.limit = limit;
 
     }

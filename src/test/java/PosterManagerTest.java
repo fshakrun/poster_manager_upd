@@ -2,10 +2,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class PosterManagerUpdTest {
+public class PosterManagerTest {
     @Test
     public void shouldFindLast() {
-        PosterManagerUpd manager = new PosterManagerUpd();
+        PosterManager manager = new PosterManager();
         manager.addMovie("Movie1");
         manager.addMovie("Movie2");
         manager.addMovie("Movie3");
@@ -20,7 +20,7 @@ public class PosterManagerUpdTest {
 
     @Test
     public void shouldFindAll5() {
-        PosterManagerUpd manager = new PosterManagerUpd(10);
+        PosterManager manager = new PosterManager(10);
         manager.addMovie("Movie1");
         manager.addMovie("Movie2");
         manager.addMovie("Movie3");
@@ -34,7 +34,7 @@ public class PosterManagerUpdTest {
 
     @Test
     public void shouldFindAll10() {
-        PosterManagerUpd manager = new PosterManagerUpd(10);
+        PosterManager manager = new PosterManager(10);
         manager.addMovie("Movie1");
         manager.addMovie("Movie2");
         manager.addMovie("Movie3");
@@ -52,8 +52,28 @@ public class PosterManagerUpdTest {
     }
 
     @Test
+    public void testOverLimit() {
+        PosterManager manager = new PosterManager(10);
+        manager.addMovie("Movie1");
+        manager.addMovie("Movie2");
+        manager.addMovie("Movie3");
+        manager.addMovie("Movie4");
+        manager.addMovie("Movie5");
+        manager.addMovie("Movie6");
+        manager.addMovie("Movie7");
+        manager.addMovie("Movie8");
+        manager.addMovie("Movie9");
+        manager.addMovie("Movie10");
+        manager.addMovie("Movie11");
+        String[] expected = {"Movie1", "Movie2", "Movie3", "Movie4", "Movie5", "Movie6", "Movie7", "Movie8", "Movie9", "Movie10","Movie11"};
+        String[] actual = manager.findAll();
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void shouldNullMovie() {
-        PosterManagerUpd manager = new PosterManagerUpd();
+        PosterManager manager = new PosterManager();
         String[] expected = {};
         String[] actual = manager.findAll();
         assertArrayEquals(expected, actual);
